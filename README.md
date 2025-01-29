@@ -63,3 +63,71 @@ Acknowledgment is a feature in Kafka that allows the producer to know if the mes
 - acks=1: The producer waits for acknowledgment from the leader broker.
 
 - acks=all: The producer waits for acknowledgment from all in-sync replicas.
+
+# Tips and tricks
+
+## Local Kafka setup
+
+Visit the [Conduktor Getting started page](https://conduktor.io/get-started) and follow the instructions to set up a local Kafka cluster (need Docker).
+
+```bash
+curl -L https://releases.conduktor.io/quick-start -o docker-compose.yml && docker compose up -d --wait && echo "Conduktor started on http://localhost:8080"
+```
+
+This will start a local Kafka cluster with Conduktor running on [http://localhost:8080](http://localhost:8080).
+
+The bootstrap server is `localhost:19092`.
+
+Thos Kafka Rest Proxy is available at `http://localhost:18082`.
+
+## Download Kafka binaries
+
+Visit the [Apache Kafka downloads page](https://kafka.apache.org/downloads) and download the binaries for your operating system.
+
+> **Note**
+> ----
+> Choose the binary version.
+>
+
+## Kafka commands
+
+### Create a topic
+
+Create a new topic named `my-topic` with 3 partitions.
+
+```bash
+kafka-topics.sh --create --topic my-topic --partitions 3 --bootstrap-server localhost:19092
+```
+
+### List topics
+
+List all topics in the Kafka cluster.
+
+```bash
+kafka-topics.sh --list --bootstrap-server localhost:19092
+```
+
+### Describe a topic
+
+Describe the `my-topic` topic.
+
+```bash
+kafka-topics.sh --describe --topic my-topic --bootstrap-server localhost:19092
+```
+
+### Produce messages
+
+Produce messages to the `my-topic` topic.
+
+```bash
+kafka-console-producer.sh --topic my-topic --bootstrap-server localhost:19092
+> Hello, Kafka!
+```
+
+### Consume messages
+
+Consume messages from the `my-topic` topic.
+
+```bash
+kafka-console-consumer.sh --topic my-topic --bootstrap-server localhost:19092
+```
