@@ -1,8 +1,3 @@
----
-layout: default
-title: Kafka Cheat Sheet
----
-
 # Kafka Cheat Sheet
 
 A simple cheat sheet for Apache Kafka.
