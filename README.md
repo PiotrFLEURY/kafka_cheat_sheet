@@ -53,3 +53,13 @@ An offset is a unique identifier for a record within a partition. Offsets are us
 ## AVRO / AVSC
 
 AVRO is a data serialization system that provides rich data structures and a compact, fast, binary data format. AVSC is the schema definition language for AVRO.
+
+## Acknowledgment acks
+
+Acknowledgment is a feature in Kafka that allows the producer to know if the message was successfully delivered to the broker. There are three types of acknowledgment:
+
+- acks=0: The producer does not wait for acknowledgment from the broker.
+
+- acks=1: The producer waits for acknowledgment from the leader broker.
+
+- acks=all: The producer waits for acknowledgment from all in-sync replicas.
